@@ -1,0 +1,5 @@
+[build]
+172.31.1.42  ansible_user="ubuntu"
+
+[test]
+172.31.13.233  ansible_user="ubuntu"

@@ -1,0 +1,199 @@
+---
+- name: "Docker Image/Build and Image/Push"
+  hosts: build
+  become: true
+  vars_files:
+    - docker.vars
+
+  tasks:
+
+    - name: Update all packages to their latest version
+      apt:
+        name: "*"
+        state: latest
+
+
+    - name: "Install packages to allow apt to use a repository over HTTPS"
+      apt:
+        pkg:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg
+        - lsb-release
+        state: present
+        update_cache: true
+
+
+    - name: "Add Docker’s official GPG key:"
+      shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      args:
+        warn: no
+
+
+    - name: "Add Docker’s official GPG key:"
+      shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+      args:
+        warn: no
+
+
+    - name: "Update the apt package index"
+      apt:
+        name: "*"
+        state: latest
+
+
+    - name: "Build-Step - Docker Installation"
+      apt:
+        pkg:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        state: present
+        update_cache: true
+
+
+    - name: "Build-Step - Additional package Installation"
+      apt:
+        pkg:
+        - git
+        - python3-pip
+        state: present
+        update_cache: true
+
+
+    - name: "Build-Step - python docker extension installation"
+      pip:
+        name: docker-py
+
+
+    - name: "Build-Step - Docker service restart/enable"
+      service:
+        name: docker
+        state: restarted
+        enabled: true
+
+
+    - name: "Build-Step - Cloning Repository"
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ repo_dest }}"
+      register: repo_status
+
+
+    - name: "Build-Step - Login to remote Repository"
+      when: repo_status.changed == true
+      docker_login:
+        username: "{{ docker_username }}"
+        password: "{{ docker_password }}"
+
+
+    - name: "Build-Step - Building image"
+      docker_image:
+        source: build
+        build:
+          path: "{{ repo_dest }}"
+          pull: yes
+        name: "{{ image_name }}"
+        tag: "{{ item }}"
+        push: true
+        force_tag: yes
+        force_source: yes
+      with_items:
+        - "{{ repo_status.after }}"
+        - latest
+
+
+    - name: "Build-Step - removing image"
+      docker_image:
+        state: absent
+        name: "{{ image_name }}"
+        tag: "{{ item }}"
+      with_items:
+        - "{{ repo_status.after }}"
+        - latest
+
+
+- name: "Docker Run Container On Test Server"
+  hosts: test
+  become: true
+  vars_files:
+    - docker.vars
+
+  tasks:
+
+    - name: Update all packages to their latest version
+      apt:
+        name: "*"
+        state: latest
+
+
+    - name: "Install packages to allow apt to use a repository over HTTPS"
+      apt:
+        pkg:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg
+        - lsb-release
+        state: present
+        update_cache: true
+
+
+    - name: "Add Docker’s official GPG key:"
+      shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      args:
+        warn: no
+
+
+    - name: "Add Docker’s official GPG key:"
+      shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+      args:
+        warn: no
+
+
+    - name: "Update the apt package index"
+      apt:
+        name: "*"
+        state: latest
+
+
+    - name: "Build-Step - Docker Installation"
+      apt:
+        pkg:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        state: present
+        update_cache: true
+
+
+    - name: "Build-Step - Additional package Installation"
+      apt:
+        pkg:
+        - git
+        - python3-pip
+        state: present
+        update_cache: true
+
+
+    - name: "Build-Step - python docker extension installation"
+      pip:
+        name: docker-py
+
+
+    - name: "Build-Step - Docker service restart/enable"
+      service:
+        name: docker
+        state: restarted
+        enabled: true
+
+
+    - name: "Deployment - Run Container"
+      docker_container:
+        name: webserver
+        image: "{{ image_name }}:latest"
+        recreate: yes
+        pull: yes
+        published_ports:
+          - "80:5000"
