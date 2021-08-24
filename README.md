@@ -9,7 +9,7 @@ The process should be initiated from a commit to a specific branch of a GitHub r
 
 ![alt text](https://i.ibb.co/vs9b6ps/dataflow-updated.png)
 
-## Set up the servers
+## Set up the Servers
 
 1. CI/CD Server
 2. Docker Image Build Server
@@ -41,7 +41,7 @@ $ apt install ansible
 
 ![alt text](https://i.ibb.co/9w0Zkgk/ansible-installation1.png)
 
-### 2. Clone my Github repository to CI/CD Server
+### 2. Clone my Github Repository to CI/CD Server
 
 ~~~
 git clone https://github.com/sebinxavi/Docker-Container-Automation.git /var/playbook
@@ -51,7 +51,7 @@ git clone https://github.com/sebinxavi/Docker-Container-Automation.git /var/play
 
 ### 3. Update the Ansible variables file and hosts file
 
-##### hosts file (hosts)
+##### Hosts file (hosts)
 ~~~
 [build]
 172.31.37.78  ansible_user="ubuntu"
@@ -110,7 +110,7 @@ docker_password: ""
 #
 ![alt text](https://i.ibb.co/ssFkXKw/latest-update.png)
 
-## About the playbook
+## About the Ansible Playbook
 
 ~~~
 ---
