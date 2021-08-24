@@ -7,7 +7,9 @@ The process should be initiated from a commit to a specific branch of a GitHub r
 
 ## Project Architecture
 
-![alt text](https://i.ibb.co/vs9b6ps/dataflow-updated.png)
+<p align="left">
+  <img width="600" height="250" src="https://i.ibb.co/vs9b6ps/dataflow-updated.png">
+</p>
 
 ## Prerequisites
 
