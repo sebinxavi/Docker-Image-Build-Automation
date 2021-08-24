@@ -15,7 +15,7 @@ The process should be initiated from a commit to a specific branch of a GitHub r
 2. Docker Image Build Server
 3. Production/Test Server
 
-We will be using ubuntu 20.04 Operating System on these three servers.
+We will be using the Ubuntu 20.04 Operating System on these three servers.
 
 ### 1. Set up the CI/CD Server
 
