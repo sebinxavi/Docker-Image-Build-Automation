@@ -1,6 +1,13 @@
 # Automating Docker Image Builds With Continuous Integration
 
-First, the process should be initiated from a commit to a specific branch of a source control repository (often master if using a GitHub-inspired branching strategy). That event kicks off a process that begins building the Docker image. Jenkins supports this event-driven flow using the “build when a change is pushed to GitHub” trigger.
+This is a DevOps CI/CD pipeline using Git, Jenkins, Ansible and Docker on AWS for deploying a python-flask application in a Docker container.
+#
+
+The process should be initiated from a commit to a specific branch of a GitHub repository(often master). This event kicks off a process that begins building the Docker image. Jenkins supports this event-driven flow using the “GitHub hook trigger" .
+
+## Project Architecture
+
+![alt text](https://i.ibb.co/vs9b6ps/dataflow-updated.png)
 
 ## Prerequisites
 
