@@ -108,7 +108,8 @@ docker_password: ""
 
 ### 9. Access the Production/Test Server's IP address in Browser
 
--  You will able to see the changes once you updated the files inside the Application's GitHub repository.
+-  You will be able to see the changes once you updated the files inside the Application's GitHub repository.
+#
 ![alt text](https://i.ibb.co/ssFkXKw/latest-update.png)
 
 ## About the playbook
