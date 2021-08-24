@@ -49,7 +49,7 @@ git clone https://github.com/sebinxavi/Docker-Container-Automation.git /var/play
 
 ![alt text](https://i.ibb.co/WngzcjV/git-clone1.png)
 
-### 3. Update the ansible variables file and hosts file
+### 3. Update the Ansible variables file and hosts file
 
 ##### hosts file (hosts)
 ~~~
@@ -73,12 +73,12 @@ docker_password: ""
 - Update the variables defined in the Ansible variable file (docker.vars)
 - repo_url is the GitHub repository URL in which the application is running.
 
-### 4. Install ansible plugin in Jenkins through "Manage Jenkins" option
+### 4. Install Ansible plugin in Jenkins through "Manage Jenkins" option
 
 ![alt text](https://i.ibb.co/2ymmTJS/ansible-plugin-installation-jenkins.png)
 
 
-### 5. Add ansible binary path through Jenkins Global Tool Configuration
+### 5. Add Ansible binary path through Jenkins Global Tool Configuration
 
 ![alt text](https://i.ibb.co/NKSLjnx/jenkins-add-ansible.png)
 
