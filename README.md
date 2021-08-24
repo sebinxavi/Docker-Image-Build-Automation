@@ -85,7 +85,7 @@ docker_password: ""
 ![alt text](https://i.ibb.co/NKSLjnx/jenkins-add-ansible.png)
 
 
-### 6. Create new Job in Jeniks by doing the following steps,
+### 6. Create new Job in Jenkins by doing the following steps
 
 - Add the GitHub repository URL
 - Add SSH private key and Ansible Vault Credentials
