@@ -100,7 +100,7 @@ docker_password: ""
 
 ![alt text](https://i.ibb.co/N7tckgq/console-output.png)
 
-### 8. Add the Jenkins Payload URL in GitHUb repository's Webhook
+### 8. Add the Jenkins Payload URL in GitHub repository's Webhook
 
 ![alt text](https://i.ibb.co/b6XyPhR/webhook-url.png)
 
