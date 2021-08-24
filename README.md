@@ -1,13 +1,11 @@
-# Docker Container with simple Node.js Hello World application 
+# Automating Docker Image Builds With Continuous Integration
 
-The goal of this example is to show you how to get a Node.js application into a Docker container. The guide is intended for development, and not for a production deployment. The guide assumes you have a basic understanding of how a Node.js application is structured.
-We will create a simple web application in Node.js, then we will build a Docker image for that application, and lastly we will instantiate a container from that image.
+First, the process should be initiated from a commit to a specific branch of a source control repository (often master if using a GitHub-inspired branching strategy). That event kicks off a process that begins building the Docker image. Jenkins supports this event-driven flow using the “build when a change is pushed to GitHub” trigger.
 
 ## Prerequisites
+
 - Three VPS/Dedicated Servers
 - SSH root access to VPS/Dedicated Servers
-
-
 
 ## Set up the servers
 
