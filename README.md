@@ -11,11 +11,6 @@ The process should be initiated from a commit to a specific branch of a GitHub r
   <img width="700" height="550" src="https://i.ibb.co/vs9b6ps/dataflow-updated.png">
 </p>
 
-## Prerequisites
-
-- Three VPS/Dedicated Servers
-- SSH root access to VPS/Dedicated Servers
-
 ## Set up the servers
 
 1. CI/CD Server
