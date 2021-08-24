@@ -64,7 +64,7 @@ git clone https://github.com/sebinxavi/Docker-Container-Automation.git /var/play
 - Update the IP address of the Build Server and Production/Test Server
 - Update the user name of the operating system
 
-##### Ansible variable file
+##### Ansible variable file (docker.vars)
 #
 ~~~
 repo_url: "https://github.com/sebinxavi/python-flask.git"
