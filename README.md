@@ -54,7 +54,6 @@ git clone https://github.com/sebinxavi/Docker-Container-Automation.git /var/play
 ### 3. Update the ansible variables file and hosts file
 
 ##### hosts file (hosts)
-#
 ~~~
 [build]
 172.31.37.78  ansible_user="ubuntu"
@@ -62,12 +61,10 @@ git clone https://github.com/sebinxavi/Docker-Container-Automation.git /var/play
 [test]
 172.31.41.77  ansible_user="ubuntu"
 ~~~
-
 - Update the IP address of the Build Server and Production/Test Server
 - Update the user name of the operating system
 
 ##### Ansible variable file (docker.vars)
-#
 ~~~
 repo_url: "https://github.com/sebinxavi/python-flask.git"
 repo_dest: "/var/repository/"
